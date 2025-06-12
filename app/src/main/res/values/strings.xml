@@ -24,4 +24,12 @@
     <string name="lemon_drink_content_description">Glass of lemonade</string>
     <string name="lemon_empty">Tap the empty glass to start again</string>
     <string name="lemon_restart_content_description">Empty glass</string>
+
+    <string name="tip_time">Tip Time</string>
+    <string name="calculate_tip">Calculate Tip</string>
+    <string name="bill_amount">Bill Amount</string>
+    <string name="tip_amount">Tip Amount: %s</string>
+    <string name="title_activity_tip_time">TipTimeActivity</string>
+    <string name="how_was_the_service">Tip Percentage</string>
+    <string name="round_up_tip">Round up tip?</string>
 </resources>
