@@ -13,6 +13,11 @@
         android:theme="@style/Theme.MyComposeApp"
         tools:targetApi="31">
         <activity
+            android:name=".ArtSpaceActivity"
+            android:exported="false"
+            android:label="@string/title_activity_art_space"
+            android:theme="@style/Theme.MyComposeApp" />
+        <activity
             android:name=".TipTimeActivity"
             android:exported="false"
             android:label="@string/title_activity_tip_time"
