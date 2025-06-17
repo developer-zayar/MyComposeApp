@@ -1,4 +1,4 @@
-package com.zayar.mycomposeapp.data.models
+package com.zayar.mycomposeapp.models
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

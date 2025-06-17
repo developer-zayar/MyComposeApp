@@ -5,4 +5,7 @@
     <dimen name="button_image_padding">24dp</dimen>
     <dimen name="button_image_width">128dp</dimen>
     <dimen name="button_image_height">160dp</dimen>
+
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
 </resources>

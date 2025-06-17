@@ -44,8 +44,8 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
-import com.zayar.mycomposeapp.data.models.ArtWork
-import com.zayar.mycomposeapp.data.models.artWorks
+import com.zayar.mycomposeapp.models.ArtWork
+import com.zayar.mycomposeapp.models.artWorks
 import com.zayar.mycomposeapp.ui.theme.MyComposeAppTheme
 
 class ArtSpaceActivity : ComponentActivity() {
