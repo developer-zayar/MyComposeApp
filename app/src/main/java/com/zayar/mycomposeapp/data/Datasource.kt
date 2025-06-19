@@ -3,6 +3,7 @@ package com.zayar.mycomposeapp.data
 import com.zayar.mycomposeapp.R
 import com.zayar.mycomposeapp.models.Affirmation
 import com.zayar.mycomposeapp.models.Dog
+import com.zayar.mycomposeapp.models.Hero
 import com.zayar.mycomposeapp.models.Topic
 
 object Datasource {
@@ -49,4 +50,5 @@ object Datasource {
         Dog(R.drawable.tzeitel, R.string.dog_name_8, 7, R.string.dog_description_8),
         Dog(R.drawable.leroy, R.string.dog_name_9, 4, R.string.dog_description_9)
     )
+
 }
