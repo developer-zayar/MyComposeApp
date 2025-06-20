@@ -32,42 +32,52 @@ class SuperHeroAppActivity : ComponentActivity() {
         setContent {
             SuperheroesTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
                 ) {
                     SuperherosApp()
                 }
             }
         }
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SuperherosApp() {
-    Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.super_hero_app_name),
-                        style = MaterialTheme.typography.displayLarge
-                    )
-                },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
-            )
+    @Composable
+    fun SuperherosApp() {
+        Scaffold(
+            topBar = {
+                TopAppBar()
+            }
+        ) { innerPadding ->
+            SuperheroList(HeroesRepository.heroes, modifier = Modifier.padding(innerPadding))
         }
-    ) { innerPadding ->
-        SuperheroList(HeroesRepository.heroes, modifier = Modifier.padding(innerPadding))
     }
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun TopAppBar(modifier: Modifier = Modifier) {
+        CenterAlignedTopAppBar(
+            title = {
+                Text(
+                    text = stringResource(id = R.string.super_hero_app_name),
+                    style = MaterialTheme.typography.displayLarge
+                )
+            },
+            modifier = modifier,
+//            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+//                containerColor = MaterialTheme.colorScheme.primaryContainer,
+//                titleContentColor = MaterialTheme.colorScheme.primary,
+//            ),
+        )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun SuperherosAppPreview() {
+        SuperheroesTheme {
+            SuperherosApp()
+        }
+    }
+
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SuperherosAppPreview() {
-    SuperheroesTheme {
-        SuperherosApp()
-    }
-}
+
