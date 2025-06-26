@@ -27,5 +27,5 @@ val Shapes = Shapes(
 val SuperHeroAppShapes = Shapes(
     small = RoundedCornerShape(8.dp),
     medium = RoundedCornerShape(16.dp),
-    large = RoundedCornerShape(16.dp)
+    large = RoundedCornerShape(24.dp)
 )

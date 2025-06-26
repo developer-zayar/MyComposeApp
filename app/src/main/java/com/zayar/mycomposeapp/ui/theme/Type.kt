@@ -96,3 +96,32 @@ val SuperHeroAppTypography = Typography(
         fontSize = 20.sp
     )
 )
+
+val poppins = FontFamily(
+    Font(R.font.poppins_regular, FontWeight.Normal),
+    Font(R.font.poppins_bold, FontWeight.Bold)
+)
+
+val PoppinsTypography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+    ),
+    displayLarge = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 30.sp
+    ),
+    displayMedium = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
+    displaySmall = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp
+    )
+)
