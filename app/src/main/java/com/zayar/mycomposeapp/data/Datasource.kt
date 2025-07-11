@@ -2,6 +2,7 @@ package com.zayar.mycomposeapp.data
 
 import com.zayar.mycomposeapp.R
 import com.zayar.mycomposeapp.models.Affirmation
+import com.zayar.mycomposeapp.models.Dessert
 import com.zayar.mycomposeapp.models.Dog
 import com.zayar.mycomposeapp.models.Hero
 import com.zayar.mycomposeapp.models.Topic
@@ -49,6 +50,22 @@ object Datasource {
         Dog(R.drawable.moana, R.string.dog_name_7, 2, R.string.dog_description_7),
         Dog(R.drawable.tzeitel, R.string.dog_name_8, 7, R.string.dog_description_8),
         Dog(R.drawable.leroy, R.string.dog_name_9, 4, R.string.dog_description_9)
+    )
+
+    val dessertList = listOf(
+        Dessert(R.drawable.cupcake, 5, 0),
+        Dessert(R.drawable.donut, 10, 5),
+        Dessert(R.drawable.eclair, 15, 20),
+        Dessert(R.drawable.froyo, 30, 50),
+        Dessert(R.drawable.gingerbread, 50, 100),
+        Dessert(R.drawable.honeycomb, 100, 200),
+        Dessert(R.drawable.icecreamsandwich, 500, 500),
+        Dessert(R.drawable.jellybean, 1000, 1000),
+        Dessert(R.drawable.kitkat, 2000, 2000),
+        Dessert(R.drawable.lollipop, 3000, 4000),
+        Dessert(R.drawable.marshmallow, 4000, 8000),
+        Dessert(R.drawable.nougat, 5000, 16000),
+        Dessert(R.drawable.oreo, 6000, 20000)
     )
 
 }

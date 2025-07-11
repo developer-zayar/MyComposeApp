@@ -109,6 +109,11 @@ val PoppinsTypography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
     ),
+    bodyMedium = TextStyle(
+        fontFamily = poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+    ),
     displayLarge = TextStyle(
         fontFamily = poppins,
         fontWeight = FontWeight.Normal,

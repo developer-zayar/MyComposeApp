@@ -176,5 +176,6 @@
     <string name="day30_title">Celebrate &amp; Reflect</string>
     <string name="day30_description">Celebrate completing 30 days of wellness! Reflect on what you\'ve learned and plan next steps.</string>
     <string name="title_activity_wellness_day">WellnessDayActivity</string>
+    <string name="title_activity_dessert_clicker">DessertClickerActivity</string>
 
 </resources>
