@@ -13,15 +13,26 @@
         android:theme="@style/Theme.MyComposeApp"
         tools:targetApi="31">
         <activity
-            android:name=".dessertclicker.DessertClickerActivity"
+            android:name=".unscramble.UnscrambleActivity"
             android:exported="true"
-            android:label="@string/title_activity_dessert_clicker"
+            android:label="@string/title_activity_unscramble"
             android:theme="@style/Theme.MyComposeApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".dessertclicker.DessertClickerActivity"
+            android:exported="true"
+            android:label="@string/title_activity_dessert_clicker"
+            android:theme="@style/Theme.MyComposeApp">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".wellnessday.WellnessDayActivity"
@@ -33,11 +44,11 @@
             android:exported="true"
             android:label="@string/title_activity_super_hero_app"
             android:theme="@style/Theme.MyComposeApp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".WoofActivity"

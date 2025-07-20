@@ -1,6 +1,11 @@
 package com.zayar.mycomposeapp.dessertclicker
 
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,13 +17,22 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -32,16 +46,28 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.zayar.mycomposeapp.R
 import com.zayar.mycomposeapp.data.Datasource
+import com.zayar.mycomposeapp.models.Dessert
 import com.zayar.mycomposeapp.ui.theme.DessertClickerAppTheme
 
 class DessertClickerActivity : ComponentActivity() {
+
+    companion object {
+        private const val TAG = "DessertClickerActivity"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate: Called")
         enableEdgeToEdge()
         setContent {
             DessertClickerAppTheme {
@@ -54,6 +80,36 @@ class DessertClickerActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart: Called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume: Called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart: Called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause: Called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: Called")
     }
 }
 
@@ -68,7 +124,7 @@ fun DessertClickerApp() {
 
     var currentDessertIndex by remember { mutableIntStateOf(0) }
 
-    val currentDessertPrice by remember {
+    var currentDessertPrice by remember {
         mutableIntStateOf(desserts[currentDessertIndex].price)
     }
 
@@ -76,16 +132,31 @@ fun DessertClickerApp() {
         mutableIntStateOf(desserts[currentDessertIndex].startProductionAmount)
     }
 
-    val currentDessertImageId by remember {
+    var currentDessertImageId by remember {
         mutableIntStateOf(desserts[currentDessertIndex].imageId)
     }
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "Dessert Clicker")
-                }
+            val intentContext = LocalContext.current
+            val layoutDirection = LocalLayoutDirection.current
+            DessertClickerAppBar(
+                onShareButtonClicked = {
+                    shareSoldDessertsInformation(
+                        intentContext = intentContext,
+                        dessertsSold = dessertsSold,
+                        revenue = revenue
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateStartPadding(layoutDirection),
+                        end = WindowInsets.safeDrawing.asPaddingValues()
+                            .calculateEndPadding(layoutDirection),
+                    )
+                    .background(MaterialTheme.colorScheme.primary)
             )
         }
     ) { contentPadding ->
@@ -94,26 +165,95 @@ fun DessertClickerApp() {
             dessertsSold = dessertsSold,
             dessertImageId = currentDessertImageId,
             onDessertClicked = {
-                if (currentDessertAmount > 0) {
-                    revenue += currentDessertPrice
-                    dessertsSold++
-                } else {
-                    if (currentDessertIndex < desserts.size - 1) {
-                        currentDessertIndex++
-                    } else {
-                        // Reset to the first dessert if all desserts are sold out
-                        currentDessertIndex = 0
-                    }
-                }
-//                revenue += currentDessertPrice
-//                dessertsSold++
+                // Update the revenue
+                revenue += currentDessertPrice
+                dessertsSold++
 
-//                if (dessertsSold >= desserts[currentDessertIndex].startProductionAmount) {
-//                    currentDessertIndex++
-//                }
+                // Show the next dessert
+                val dessertToShow = determineDessertToShow(desserts, dessertsSold)
+                currentDessertImageId = dessertToShow.imageId
+                currentDessertPrice = dessertToShow.price
             },
             modifier = Modifier.padding(contentPadding)
         )
+    }
+}
+
+/**
+ * Determine which dessert to show.
+ */
+fun determineDessertToShow(
+    desserts: List<Dessert>,
+    dessertsSold: Int
+): Dessert {
+    var dessertToShow = desserts.first()
+    for (dessert in desserts) {
+        if (dessertsSold >= dessert.startProductionAmount) {
+            dessertToShow = dessert
+        } else {
+            // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
+            // you'll start producing more expensive desserts as determined by startProductionAmount
+            // We know to break as soon as we see a dessert who's "startProductionAmount" is greater
+            // than the amount sold.
+            break
+        }
+    }
+
+    return dessertToShow
+}
+
+@Composable
+private fun DessertClickerAppBar(
+    onShareButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(R.string.app_name),
+            color = MaterialTheme.colorScheme.onPrimary,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_medium)),
+        )
+        IconButton(
+            onClick = onShareButtonClicked,
+            modifier = Modifier.padding(end = dimensionResource(R.dimen.padding_medium)),
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Share,
+                contentDescription = stringResource(R.string.share),
+                tint = MaterialTheme.colorScheme.onPrimary
+            )
+        }
+    }
+}
+
+/**
+ * Share desserts sold information using ACTION_SEND intent
+ */
+private fun shareSoldDessertsInformation(intentContext: Context, dessertsSold: Int, revenue: Int) {
+    val sendIntent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(
+            Intent.EXTRA_TEXT,
+            intentContext.getString(R.string.share_text, dessertsSold, revenue)
+        )
+        type = "text/plain"
+    }
+
+    val shareIntent = Intent.createChooser(sendIntent, null)
+
+    try {
+        ContextCompat.startActivity(intentContext, shareIntent, null)
+    } catch (e: ActivityNotFoundException) {
+        Toast.makeText(
+            intentContext,
+            intentContext.getString(R.string.sharing_not_available),
+            Toast.LENGTH_LONG
+        ).show()
     }
 }
 
