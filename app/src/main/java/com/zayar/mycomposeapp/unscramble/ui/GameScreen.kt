@@ -137,9 +137,9 @@ fun GameLayout(modifier: Modifier = Modifier) {
                 singleLine = true,
                 shape = MaterialTheme.shapes.large,
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+//                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+//                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+//                    disabledContainerColor = MaterialTheme.colorScheme.surface,
                 ),
                 label = {
                     Text(stringResource(R.string.enter_your_word))
@@ -187,11 +187,6 @@ private fun FinalScoreDialog(
             // button. If you want to disable that functionality, simply use an empty
             // onDismissRequest.
         },
-        confirmButton = {
-            TextButton(onClick = onPlayAgain) {
-                Text(text = stringResource(R.string.play_again))
-            }
-        },
         title = { Text(text = stringResource(R.string.congratulations)) },
         text = { Text(text = stringResource(R.string.you_scored, score)) },
         modifier = modifier,
@@ -200,6 +195,11 @@ private fun FinalScoreDialog(
                 activity.finish()
             }) {
                 Text(text = stringResource(R.string.exit))
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onPlayAgain) {
+                Text(text = stringResource(R.string.play_again))
             }
         },
     )
