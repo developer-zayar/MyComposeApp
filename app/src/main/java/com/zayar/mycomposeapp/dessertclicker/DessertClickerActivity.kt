@@ -39,6 +39,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -54,6 +55,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.zayar.mycomposeapp.R
 import com.zayar.mycomposeapp.data.Datasource
 import com.zayar.mycomposeapp.models.Dessert
@@ -113,28 +115,32 @@ class DessertClickerActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
-fun DessertClickerApp() {
+fun DessertClickerApp(
+    viewModel: DessertViewModel = viewModel()
+) {
 
-    val desserts = Datasource.dessertList
+    val uiState by viewModel.dessertUiState.collectAsState()
 
-    var revenue by remember { mutableIntStateOf(0) }
-    var dessertsSold by remember { mutableIntStateOf(0) }
-
-    var currentDessertIndex by remember { mutableIntStateOf(0) }
-
-    var currentDessertPrice by remember {
-        mutableIntStateOf(desserts[currentDessertIndex].price)
-    }
-
-    val currentDessertAmount by remember {
-        mutableIntStateOf(desserts[currentDessertIndex].startProductionAmount)
-    }
-
-    var currentDessertImageId by remember {
-        mutableIntStateOf(desserts[currentDessertIndex].imageId)
-    }
+//    val desserts = Datasource.dessertList
+//
+//    var revenue by remember { mutableIntStateOf(0) }
+//    var dessertsSold by remember { mutableIntStateOf(0) }
+//
+//    var currentDessertIndex by remember { mutableIntStateOf(0) }
+//
+//    var currentDessertPrice by remember {
+//        mutableIntStateOf(desserts[currentDessertIndex].price)
+//    }
+//
+//    val currentDessertAmount by remember {
+//        mutableIntStateOf(desserts[currentDessertIndex].startProductionAmount)
+//    }
+//
+//    var currentDessertImageId by remember {
+//        mutableIntStateOf(desserts[currentDessertIndex].imageId)
+//    }
 
     Scaffold(
         topBar = {
@@ -144,8 +150,8 @@ fun DessertClickerApp() {
                 onShareButtonClicked = {
                     shareSoldDessertsInformation(
                         intentContext = intentContext,
-                        dessertsSold = dessertsSold,
-                        revenue = revenue
+                        dessertsSold = uiState.dessertsSold,
+                        revenue = uiState.revenue
                     )
                 },
                 modifier = Modifier
@@ -161,18 +167,11 @@ fun DessertClickerApp() {
         }
     ) { contentPadding ->
         DessertClickerScreen(
-            revenue = revenue,
-            dessertsSold = dessertsSold,
-            dessertImageId = currentDessertImageId,
+            revenue = uiState.revenue,
+            dessertsSold = uiState.dessertsSold,
+            dessertImageId = uiState.currentDessertImageId,
             onDessertClicked = {
-                // Update the revenue
-                revenue += currentDessertPrice
-                dessertsSold++
-
-                // Show the next dessert
-                val dessertToShow = determineDessertToShow(desserts, dessertsSold)
-                currentDessertImageId = dessertToShow.imageId
-                currentDessertPrice = dessertToShow.price
+                viewModel.onDessertClicked()
             },
             modifier = Modifier.padding(contentPadding)
         )

@@ -4,23 +4,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.zayar.mycomposeapp.data.Datasource
+import com.zayar.mycomposeapp.data.MAX_NO_OF_WORDS
+import com.zayar.mycomposeapp.data.SCORE_INCREASE
+import com.zayar.mycomposeapp.data.allWords
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class GameViewModel : ViewModel() {
 
     // Game UI state
     private val _uiState = MutableStateFlow(GameUiState())
-    val uiState: StateFlow<GameUiState> = _uiState
+    val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
     var userGuess by mutableStateOf("")
         private set
 
     // Set of words used in the game
-    private lateinit var currentWord: String
     private var usedWords: MutableSet<String> = mutableSetOf()
+    private lateinit var currentWord: String
 
 
     init {
@@ -43,7 +46,7 @@ class GameViewModel : ViewModel() {
 
     fun checkUserGuess() {
         if (userGuess.equals(currentWord, ignoreCase = true)) {
-            val updatedScore = _uiState.value.score.plus(Datasource.SCORE_INCREASE)
+            val updatedScore = _uiState.value.score.plus(SCORE_INCREASE)
             updateGameState(updatedScore)
         } else {
             _uiState.update { currentState ->
@@ -55,7 +58,7 @@ class GameViewModel : ViewModel() {
     }
 
     private fun updateGameState(updatedScore: Int) {
-        if (usedWords.size == Datasource.MAX_NO_OF_WORDS) {
+        if (usedWords.size == MAX_NO_OF_WORDS) {
             //Last round in the game, update isGameOver to true, don't pick a new word
             _uiState.update { currentState ->
                 currentState.copy(
@@ -78,7 +81,7 @@ class GameViewModel : ViewModel() {
     }
 
     private fun pickRandomWordAndShuffle(): String {
-        currentWord = Datasource.allWords.random()
+        currentWord = allWords.random()
         if (usedWords.contains(currentWord)) {
             return pickRandomWordAndShuffle()
         } else {
