@@ -49,6 +49,7 @@ import com.zayar.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun StartOrderScreen(
     quantityOptions: List<Pair<Int, Int>>,
+    onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -62,7 +63,7 @@ fun StartOrderScreen(
         ) {
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Image(
-                painter = painterResource(R.drawable.cupcake),
+                painter = painterResource(R.drawable.cupcake_order),
                 contentDescription = null,
                 modifier = Modifier.width(300.dp)
             )
@@ -83,7 +84,10 @@ fun StartOrderScreen(
             quantityOptions.forEach { item ->
                 SelectQuantityButton(
                     labelResourceId = item.first,
-                    onClick = {}
+                    onClick = {
+                        onNextButtonClicked(item.second)
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
@@ -114,6 +118,7 @@ fun StartOrderPreview() {
     CupcakeTheme {
         StartOrderScreen(
             quantityOptions = DataSource.quantityOptions,
+            onNextButtonClicked = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_medium))

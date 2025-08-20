@@ -1,6 +1,7 @@
 package com.zayar.mycomposeapp.unscramble.ui
 
 import android.app.Activity
+import android.content.Intent
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -39,6 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.zayar.cupcake.CupcakeActivity
 import com.zayar.mycomposeapp.R
 import com.zayar.mycomposeapp.unscramble.ui.theme.UnscrambleTheme
 
@@ -47,6 +49,8 @@ fun GameScreen(
     gameViewModel: GameViewModel = viewModel(),
 ) {
     val gameUiState by gameViewModel.uiState.collectAsState()
+
+    val activity = (LocalActivity.current as Activity)
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -108,11 +112,17 @@ fun GameScreen(
                     fontSize = 16.sp
                 )
             }
+
+            Button(onClick = {
+                Intent(activity, CupcakeActivity::class.java).also {
+                    activity.startActivity(it)
+                }
+            }) { Text(text = "Go To Cupcake Screen") }
         }
 
         GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
 
-        if (gameUiState.isGameOver){
+        if (gameUiState.isGameOver) {
             FinalScoreDialog(
                 score = gameUiState.score,
                 onPlayAgain = {
