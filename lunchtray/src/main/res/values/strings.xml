@@ -1,0 +1,4 @@
+<resources>
+    <string name="title_activity_lunch_tray">LunchTrayActivity</string>
+    <string name="title_activity_launch_tray">LaunchTrayActivity</string>
+</resources>

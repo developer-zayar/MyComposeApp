@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "MyComposeApp"
 include(":app")
 include(":cupcake")
+include(":lunchtray")

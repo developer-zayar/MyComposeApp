@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zayar.cupcake"
+    namespace = "com.zayar.lunchtray"
     compileSdk = 35
 
     defaultConfig {
@@ -50,11 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(libs.androidx.navigation.testing)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.navigation.compose)
 }

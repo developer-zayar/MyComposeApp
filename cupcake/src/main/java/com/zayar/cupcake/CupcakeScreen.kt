@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -27,7 +26,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -40,7 +38,7 @@ import com.zayar.cupcake.ui.SelectOptionScreen
 import com.zayar.cupcake.ui.StartOrderScreen
 
 enum class CupcakeScreen(@StringRes val title: Int) {
-    Start(title = R.string.app_name),
+    Start(title = R.string.app_name_cupcake),
     Flavor(title = R.string.choose_flavor),
     Pickup(title = R.string.choose_pickup_date),
     Summary(title = R.string.order_summary)

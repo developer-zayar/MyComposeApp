@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cupcake</string>
+    <string name="app_name_cupcake">Cupcake</string>
     <string name="title_activity_cupcake">CupcakeActivity</string>
     <string name="order_cupcakes">Order Cupcakes</string>
     <string name="one_cupcake">One Cupcake</string>
