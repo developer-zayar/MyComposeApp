@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity
-            android:name=".LunchTrayActivity"
-            android:exported="false"
-            android:label="@string/title_activity_lunch_tray"
-            android:theme="@style/Theme.MyComposeApp" />
+<!--        <activity-->
+<!--            android:name=".LunchTrayActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_lunch_tray"-->
+<!--            android:theme="@style/Theme.MyComposeApp" />-->
     </application>
 
 </manifest>

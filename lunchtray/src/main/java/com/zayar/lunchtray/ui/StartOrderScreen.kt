@@ -35,7 +35,7 @@ fun StartOrderScreen(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun StartOrderPreview(){
     StartOrderScreen(

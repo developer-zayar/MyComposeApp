@@ -13,15 +13,26 @@
         android:theme="@style/Theme.MyComposeApp"
         tools:targetApi="31">
         <activity
-            android:name="com.zayar.cupcake.CupcakeActivity"
+            android:name="com.zayar.lunchtray.LunchTrayActivity"
             android:exported="true"
-            android:label="@string/app_name_cupcake"
+            android:label="@string/app_name_lunch_tray"
             android:theme="@style/Theme.MyComposeApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zayar.cupcake.CupcakeActivity"
+            android:exported="false"
+            android:label="@string/app_name_cupcake"
+            android:theme="@style/Theme.MyComposeApp">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".unscramble.UnscrambleActivity"
