@@ -46,6 +46,8 @@ class ReplyActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     ReplyAppTheme {
-        ReplyApp()
+        Surface {
+            ReplyApp()
+        }
     }
 }

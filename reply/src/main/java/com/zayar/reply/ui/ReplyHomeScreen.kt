@@ -8,6 +8,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Drafts
+import androidx.compose.material.icons.filled.Inbox
+import androidx.compose.material.icons.filled.Report
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -25,7 +31,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.zayar.reply.R
+import com.zayar.reply.data.Email
+import com.zayar.reply.data.MailboxType
+import com.zayar.reply.data.local.LocalAccountsDataProvider
+import com.zayar.reply.data.local.LocalEmailsDataProvider
 
 @Composable
 fun ReplyHomeScreen(
@@ -63,6 +74,20 @@ fun ReplyHomeScreen(
         onEmailCardPressed = onEmailCardPressed,
         navigationItemContentList = navigationItemContentList,
         modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeScreenPreview() {
+    ReplyHomeScreen(
+        replyUiState = ReplyUiState(
+            mailboxes = LocalEmailsDataProvider.allEmails.groupBy { it.mailbox },
+            currentSelectedEmail = LocalEmailsDataProvider.defaultEmail
+        ),
+        onTabPressed = {},
+        onEmailCardPressed = {},
+        onDetailScreenBackPressed = {}
     )
 }
 

@@ -40,6 +40,7 @@ dependencies {
 
     implementation(project(":cupcake"))
     implementation(project(":lunchtray"))
+    implementation(project(":reply"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -1,5 +1,7 @@
 package com.zayar.reply.data
 
+import androidx.annotation.StringRes
+
 data class Email(
     /** Unique ID of the email **/
     val id: Long,
