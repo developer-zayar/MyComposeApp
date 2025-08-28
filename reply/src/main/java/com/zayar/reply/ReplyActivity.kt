@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -19,6 +22,7 @@ import com.zayar.reply.ui.ReplyApp
 import com.zayar.reply.ui.theme.ReplyAppTheme
 
 class ReplyActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +38,10 @@ class ReplyActivity : ComponentActivity() {
                                 .calculateEndPadding(layoutDirection)
                         )
                 ) {
-                    ReplyApp()
+                    val windowSize = calculateWindowSizeClass(this)
+                    ReplyApp(
+                        windowSize = windowSize.widthSizeClass
+                    )
                 }
             }
         }
@@ -47,7 +54,29 @@ class ReplyActivity : ComponentActivity() {
 fun GreetingPreview() {
     ReplyAppTheme {
         Surface {
-            ReplyApp()
+            ReplyApp(
+                windowSize = WindowWidthSizeClass.Compact,
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 700)
+@Composable
+fun ReplyAppMediumPreview() {
+    ReplyAppTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun ReplyAppExpandedPreview() {
+    ReplyAppTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
         }
     }
 }

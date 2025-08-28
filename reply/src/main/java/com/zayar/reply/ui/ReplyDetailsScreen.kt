@@ -80,7 +80,7 @@ fun ReplyDetailsScreen(
                     modifier = if (isFullScreen) {
                         Modifier.padding(horizontal = dimensionResource(R.dimen.detail_card_outer_padding_horizontal))
                     } else {
-                        Modifier
+                        Modifier.padding(end = dimensionResource(R.dimen.detail_card_outer_padding_horizontal))
                     }
                 )
             }

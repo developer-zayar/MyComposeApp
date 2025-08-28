@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
@@ -46,7 +47,13 @@ fun ReplyListOnlyContent(
 ) {
     val emails = replyUiState.currentMailboxEmails
 
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = WindowInsets.safeDrawing.asPaddingValues(),
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.email_list_item_vertical_spacing)
+        )
+    ) {
         item {
             ReplyHomeTopBar(
                 modifier = Modifier
