@@ -2,9 +2,11 @@ package com.zayar.mycity.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,9 +27,12 @@ import com.zayar.mycity.ui.theme.MyCityTheme
 
 @Composable
 fun CategoryScreen(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
+        modifier = modifier
+    ) {
         items(items = LocalDataProvider.categories, key = { it.id }) { category ->
             CategoryListItem(
                 category = category,
@@ -51,9 +56,10 @@ fun CategoryListItem(
     ) {
         Box(
             modifier = modifier
+                .fillMaxHeight()
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_launcher_foreground),
+                painter = painterResource(R.drawable.my_city),
                 contentDescription = null,
                 alignment = Alignment.Center,
                 contentScale = ContentScale.FillWidth
@@ -74,7 +80,7 @@ fun CategoryListItem(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun CategoryListItemPreview() {
     MyCityTheme {

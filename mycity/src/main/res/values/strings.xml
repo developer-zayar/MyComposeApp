@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyCity</string>
+    <string name="back_button">Back</string>
+    <string name="category">Category</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="place_details">PlaceDetails</string>
 </resources>

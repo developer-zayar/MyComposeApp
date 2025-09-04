@@ -7,8 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.zayar.mycity.ui.CategoryScreen
+import com.zayar.mycity.ui.MyCityApp
 import com.zayar.mycity.ui.theme.MyCityTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,13 +34,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MyCityApp() {
-    Scaffold(
-        topBar = {
-//            MyCityAppBar()
-        }
-    ) { innerPadding ->
-        CategoryScreen(modifier = Modifier.padding(innerPadding))
-    }
-}
+
