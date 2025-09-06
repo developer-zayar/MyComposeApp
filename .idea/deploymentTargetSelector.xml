@@ -4,29 +4,14 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-06-19T10:11:59.138861500Z">
+        <DropdownSelection timestamp="2025-08-23T08:20:08.172238Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="Default" identifier="serial=192.168.0.55:5555;connection=5df29d4a" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/zayyarphyo/.android/avd/Pixel_7_API_34.avd" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
-      </SelectionState>
-      <SelectionState runConfigName="CupcakeScreenNavigationTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="cupcakeNavHost_verifyStartDestination()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="CupcakeOrderScreenTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="ReplyAppStateRestorationTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="Compact Tests">
-        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="sports">
         <option name="selectionMode" value="DROPDOWN" />

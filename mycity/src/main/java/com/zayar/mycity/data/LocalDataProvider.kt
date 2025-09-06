@@ -31,10 +31,22 @@ object LocalDataProvider {
             imageUrl = "https://picsum.photos/300/200?coffee"
         ),
         PlaceDetails(
+            recommendationId = 2,
+            title = "Sunset Bakery",
+            description = "Delicious pastries and freshly baked bread. A perfect spot for your morning coffee.",
+            imageUrl = "https://picsum.photos/300/200?bakery"
+        ),
+        PlaceDetails(
             recommendationId = 3,
             title = "Golden Dragon",
             description = "Authentic Chinese cuisine with modern vibes. Great dim sum and Peking duck.",
             imageUrl = "https://picsum.photos/300/200?restaurant"
+        ),
+        PlaceDetails(
+            recommendationId = 4,
+            title = "Bella Italia",
+            description = "Cozy Italian restaurant serving handmade pasta and wood-fired pizza.",
+            imageUrl = "https://picsum.photos/300/200?italian"
         ),
         PlaceDetails(
             recommendationId = 5,
@@ -43,11 +55,24 @@ object LocalDataProvider {
             imageUrl = "https://picsum.photos/300/200?park"
         ),
         PlaceDetails(
+            recommendationId = 6,
+            title = "Ocean View Beach",
+            description = "Relaxing beach with white sand and clear water. Perfect for sunsets and picnics.",
+            imageUrl = "https://picsum.photos/300/200?beach"
+        ),
+        PlaceDetails(
             recommendationId = 7,
             title = "City Art Museum",
             description = "Features classical and modern artworks. Current exhibition: Impressionist Landscapes.",
             imageUrl = "https://picsum.photos/300/200?museum"
+        ),
+        PlaceDetails(
+            recommendationId = 8,
+            title = "Skyline Rooftop Bar",
+            description = "Trendy rooftop bar with panoramic city views, cocktails, and live music on weekends.",
+            imageUrl = "https://picsum.photos/300/200?bar"
         )
     )
+
 
 }
