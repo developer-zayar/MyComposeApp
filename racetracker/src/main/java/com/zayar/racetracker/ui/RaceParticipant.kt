@@ -23,16 +23,21 @@ class RaceParticipant(
         private set
 
     suspend fun run() {
-        try {
-            while (currentProgress < maxProgress) {
-                delay(progressDelayMillis)
-                currentProgress += progressIncrement
-            }
-        } catch (e: CancellationException) {
-            Log.e("RaceParticipant", "$name: ${e.message}")
-            throw e // Always re-throw CancellationException.
+        while (currentProgress < maxProgress) {
+            delay(progressDelayMillis)
+            currentProgress += progressIncrement
         }
 
+        // Checking the cancellation of the coroutine
+//        try {
+//            while (currentProgress < maxProgress) {
+//                delay(progressDelayMillis)
+//                currentProgress += progressIncrement
+//            }
+//        } catch (e: CancellationException) {
+//            Log.e("RaceParticipant", "$name: ${e.message}")
+//            throw e // Always re-throw CancellationException.
+//        }
     }
 
     fun reset() {

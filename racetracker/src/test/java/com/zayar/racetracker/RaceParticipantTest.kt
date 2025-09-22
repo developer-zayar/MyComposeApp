@@ -63,7 +63,7 @@ class RaceParticipantTest {
             racerJob.cancelAndJoin()
         }
 
-        assertEquals(expectedProgress, raceParticipant.currentProgress)
+        assertEquals(expectedProgress * 2, raceParticipant.currentProgress)
     }
 
     @Test(expected = IllegalArgumentException::class)
