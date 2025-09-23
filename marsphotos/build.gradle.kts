@@ -62,11 +62,14 @@ dependencies {
 
     // Retrofit
     implementation(libs.squareup.retrofit)
+    implementation(libs.okhttp)
     // Retrofit with Scalar Converter
 //    implementation(libs.squareup.retrofit.converter.scalars)
-//    implementation(libs.retrofit2.kotlinx.serialization.converter)
+//    implementation(libs.retrofit2.kotlinx.serialization.converter) // deprecated
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.converter.kotlinx.serialization)
 
-    implementation(libs.okhttp)
+    // Coil
+    implementation(libs.coil.compose)
+
 }

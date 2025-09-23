@@ -1,6 +1,8 @@
-package com.zayar.marsphotos.fake
+package com.zayar.marsphotos
 
 import com.zayar.marsphotos.data.NetworkMarsRepository
+import com.zayar.marsphotos.fake.FakeDataSource
+import com.zayar.marsphotos.fake.FakeMarsApiService
 import org.junit.Assert.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Test

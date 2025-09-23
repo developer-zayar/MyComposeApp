@@ -1,5 +1,6 @@
 package com.zayar.marsphotos.ui.screens
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -38,14 +39,17 @@ class MarsViewModel(
         getMarsPhotos()
     }
 
-    private fun getMarsPhotos() {
+    fun getMarsPhotos() {
 //        marsUiState = "Set the Mars API status response here!"
         viewModelScope.launch {
+            marsUiState = MarsUiState.Loading
             marsUiState = try {
 //                val listResult = MarsApi.retrofitService.getPhotos()
 //                marsUiState = listResult
                 val listResult = marsPhotosRepository.getMarsPhotos()
-                MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
+//                MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
+//                Log.d("MarsViewModel", "getMarsPhotos: $listResult")
+                MarsUiState.Success(listResult)
             } catch (e: IOException) {
                 MarsUiState.Error
             } catch (e: HttpException) {
