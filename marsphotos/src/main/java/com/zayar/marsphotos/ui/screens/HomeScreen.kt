@@ -94,8 +94,8 @@ fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         AsyncImage(
-            model = ImageRequest.Builder(context = LocalContext.current)
-                .data("https://cdn-icons-png.flaticon.com/512/2530/2530892.png")
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(photo.imgSrc)
                 .crossfade(true)
                 .build(),
             error = painterResource(R.drawable.ic_broken_image),
