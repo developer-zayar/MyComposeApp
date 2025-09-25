@@ -64,12 +64,12 @@ fun AmphibiansListScreen(
     LazyColumn(
         modifier = modifier.padding(horizontal = 8.dp),
         contentPadding = contentPadding,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(amphibians.size) { index ->
             AmphibianCard(
                 amphibian = amphibians[index],
                 modifier = Modifier
-                    .padding(4.dp)
                     .fillMaxWidth()
             )
         }
