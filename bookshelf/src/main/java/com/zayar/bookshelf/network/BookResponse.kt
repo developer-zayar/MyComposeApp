@@ -1,7 +1,8 @@
-package com.zayar.bookshelf.model
+package com.zayar.bookshelf.network
 
 
 import com.google.gson.annotations.SerializedName
+import com.zayar.bookshelf.model.Book
 
 data class BookResponse(
     @SerializedName("kind")
@@ -9,5 +10,5 @@ data class BookResponse(
     @SerializedName("totalItems")
     val totalItems: Int?,
     @SerializedName("items")
-    val items: List<Book>
+    val items: List<Book>?
 )
