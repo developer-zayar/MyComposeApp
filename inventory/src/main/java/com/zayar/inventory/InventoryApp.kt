@@ -11,6 +11,9 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.zayar.inventory.ui.navigation.InventoryNavHost
 
 @Composable
 fun InventoryApp(navController: NavHostController = rememberNavController()) {

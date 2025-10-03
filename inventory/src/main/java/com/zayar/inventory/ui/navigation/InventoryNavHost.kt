@@ -3,10 +3,18 @@ package com.zayar.inventory.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.zayar.inventory.ui.home.HomeDestination
+import com.zayar.inventory.ui.home.HomeScreen
+import com.zayar.inventory.ui.item.ItemDetailsDestination
+import com.zayar.inventory.ui.item.ItemDetailsScreen
+import com.zayar.inventory.ui.item.ItemEditDestination
+import com.zayar.inventory.ui.item.ItemEditScreen
+import com.zayar.inventory.ui.item.ItemEntryDestination
+import com.zayar.inventory.ui.item.ItemEntryScreen
 
 @Composable
 fun InventoryNavHost(
