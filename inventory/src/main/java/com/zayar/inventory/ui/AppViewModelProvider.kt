@@ -7,6 +7,8 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.zayar.inventory.InventoryApplication
 import com.zayar.inventory.ui.home.HomeViewModel
+import com.zayar.inventory.ui.item.ItemDetailsViewModel
+import com.zayar.inventory.ui.item.ItemEditViewModel
 import com.zayar.inventory.ui.item.ItemEntryViewModel
 
 object AppViewModelProvider {
